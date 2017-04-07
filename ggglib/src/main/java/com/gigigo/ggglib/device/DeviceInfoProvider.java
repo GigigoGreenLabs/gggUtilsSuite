@@ -27,7 +27,8 @@ import com.gigigo.ggglib.device.providers.AndroidSecureIdProvider;
 import com.gigigo.ggglib.device.providers.BluetoothMacProvider;
 import com.gigigo.ggglib.device.providers.HandsetProvider;
 import com.gigigo.ggglib.device.providers.WifiMacProvider;
-
+//avoid that and use lib compile 'com.github.GigigoGreenLabs:DeviceInfoLib:0.1RC'
+@Deprecated
 public class DeviceInfoProvider {
 
     public static String getHandset() {

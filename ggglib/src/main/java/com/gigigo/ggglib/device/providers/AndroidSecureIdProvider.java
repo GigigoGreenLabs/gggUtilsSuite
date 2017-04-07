@@ -20,7 +20,7 @@ package com.gigigo.ggglib.device.providers;
 
 import android.content.Context;
 import android.provider.Settings;
-
+@Deprecated
 public class AndroidSecureIdProvider {
 
     public String provideAndroidSecureId(Context context) {

@@ -22,7 +22,6 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -32,7 +31,6 @@ import android.view.ContextThemeWrapper;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import com.gigigo.ggglib.R;
-import com.gigigo.ggglib.device.AndroidSdkVersion;
 import com.karumi.dexterox.Dexter;
 
 public class PermissionsUIViews {
@@ -40,33 +38,35 @@ public class PermissionsUIViews {
   @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
   public static void showRationaleView(final RationaleResponse rationaleResponse, Context context,
       int rationaleTitleStringId, int rationaleMessageStringId) {
-    new AlertDialog.Builder(new ContextThemeWrapper(context,R.style.ggg_theme_dialog))
-        .setTitle(rationaleTitleStringId)
-        .setMessage(rationaleMessageStringId)
-        .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-          @Override public void onClick(DialogInterface dialog, int which) {
-            dialog.dismiss();
-            rationaleResponse.cancelPermissionRequest();
-            Dexter.closeActivity();
-          }
-        })
-        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-          @Override public void onClick(DialogInterface dialog, int which) {
-            dialog.dismiss();
-            rationaleResponse.continuePermissionRequest();
-          }
-        })
-        .setOnDismissListener(new DialogInterface.OnDismissListener() {
-          @Override public void onDismiss(DialogInterface dialog) {
-            rationaleResponse.cancelPermissionRequest();
-            Dexter.closeActivity();
-          }
-        })
-        .show();
+    if(context!=null) {
+      new AlertDialog.Builder(new ContextThemeWrapper(context, R.style.ggg_theme_dialog)).setTitle(
+          rationaleTitleStringId)
+          .setMessage(rationaleMessageStringId)
+          .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override public void onClick(DialogInterface dialog, int which) {
+              dialog.dismiss();
+              rationaleResponse.cancelPermissionRequest();
+              Dexter.closeActivity();
+            }
+          })
+          .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override public void onClick(DialogInterface dialog, int which) {
+              dialog.dismiss();
+              rationaleResponse.continuePermissionRequest();
+            }
+          })
+          .setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override public void onDismiss(DialogInterface dialog) {
+              rationaleResponse.cancelPermissionRequest();
+              Dexter.closeActivity();
+            }
+          })
+          .show();
+    }
   }
 
   public static void showPermissionToast(Context context, int stringId) {
-    if (stringId != -1) Toast.makeText(context, stringId, Toast.LENGTH_LONG).show();
+    if (stringId != -1 && context!=null) Toast.makeText(context, stringId, Toast.LENGTH_LONG).show();
   }
 
   public static ViewGroup getAppContainer(Activity activity) throws NullContainerException {
@@ -118,7 +118,7 @@ public class PermissionsUIViews {
   @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
   public static void showSettingsView(final Context context, int rationaleTitleStringId,
       int settingsStringId, int deniedStringId) {
-    if (deniedStringId != -1) {
+    if (deniedStringId != -1 && context!=null) {
       new AlertDialog.Builder(new ContextThemeWrapper(context, R.style.ggg_theme_dialog))
           .setTitle(rationaleTitleStringId)
           .setMessage(deniedStringId)

@@ -21,7 +21,7 @@ package com.gigigo.ggglib.device.providers;
 import android.content.Context;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-
+@Deprecated
 public class WifiMacProvider {
 
 

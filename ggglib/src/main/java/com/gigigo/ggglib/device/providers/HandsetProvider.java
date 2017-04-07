@@ -19,7 +19,7 @@
 package com.gigigo.ggglib.device.providers;
 
 import android.os.Build;
-
+@Deprecated
 public class HandsetProvider {
 
     public String provideHandset() {

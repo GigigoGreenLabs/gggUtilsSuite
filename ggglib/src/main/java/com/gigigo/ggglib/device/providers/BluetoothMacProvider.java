@@ -19,7 +19,7 @@
 package com.gigigo.ggglib.device.providers;
 
 import android.bluetooth.BluetoothAdapter;
-
+@Deprecated
 public class BluetoothMacProvider {
 
     public BluetoothAdapter provideBluetoothDefaultAdapter() {
