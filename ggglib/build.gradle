@@ -61,7 +61,6 @@ dependencies {
   compile parent.ext.dependencies.permissionsModule
   compile parent.ext.dependencies.retrofit
   compile parent.ext.dependencies.gsonConverter
-  compile parent.ext.dependencies.okHttp
 
   compile project (':ggg-java-lib')
   compile project (':ggglogger')
