@@ -25,8 +25,8 @@ allprojects {
                    // permissionsModule          : project(':permissionModule'){transitive=true}
 
                     //permissionsModule          : 'com.github.GigigoGreenLabs:permissionsModule:2.3'//master branch
-                    permissionsModule          : 'com.github.Gigigo-Android-Devs:gigigo-permissions-library-android:3.6RC'//master branch
-                    //   permissionsModule          : 'com.github.GigigoGreenLabs:permissionsModule:1.1'//master branch
+                   // permissionsModule          : 'com.github.Gigigo-Android-Devs:gigigo-permissions-library-android:3.6RC'//master branch
+                        permissionsModule          : 'com.github.GigigoGreenLabs:permissionsModule:3.6RC'//master branch
                    // permissionsModule          : 'com.github.GigigoGreenLabs:permissionsModule:2.1' //new reducebranch
     ]
 
