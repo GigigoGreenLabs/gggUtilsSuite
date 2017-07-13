@@ -21,39 +21,37 @@ package com.gigigo.ggglib.permissions;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.view.ViewGroup;
 import android.support.v4ox.content.ContextCompat;
-
 import com.gigigo.ggglib.ContextProvider;
-import com.karumi.dexterox.Dexter;
-import com.karumi.dexterox.listener.single.CompositePermissionListener;
-import com.karumi.dexterox.listener.single.PermissionListener;
+import com.gigigo.ggglib.permission.PermissionManager;
+import com.gigigo.ggglib.permission.listener.single.CompositePermissionListener;
+import com.gigigo.ggglib.permission.listener.single.PermissionListener;
 
 public class AndroidPermissionCheckerImpl implements PermissionChecker {
 
   private final ContextProvider contextProvider;
 
   public AndroidPermissionCheckerImpl(Context context, ContextProvider contextProvider) {
-    Dexter.initialize(context);
+    PermissionManager.initialize(context);
     this.contextProvider = contextProvider;
   }
 
   @Override public void askForPermission(Permission permission,
       UserPermissionRequestResponseListener userResponse, Activity activity) {
-    if (Dexter.isRequestOngoing()) {
+    if (PermissionManager.isRequestOngoing()) {
       return;
     }
 
     PermissionListener[] listeners = createListeners(permission, userResponse, activity);
 
-    Dexter.checkPermission(new CompositePermissionListener(listeners),
+    PermissionManager.checkPermission(new CompositePermissionListener(listeners),
         permission.getAndroidPermissionStringType());
   }
 
 
 
   @Override public void continuePendingPermissionsRequestsIfPossible() {
-    Dexter.continuePendingRequestIfPossible(
+    PermissionManager.continuePendingRequestIfPossible(
         new ContinueRequestPermissionListenerImpl(contextProvider));
   }
 

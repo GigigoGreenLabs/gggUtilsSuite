@@ -22,12 +22,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 import com.gigigo.ggglib.ContextProvider;
-import com.karumi.dexterox.Dexter;
-import com.karumi.dexterox.PermissionToken;
-import com.karumi.dexterox.listener.PermissionDeniedResponse;
-import com.karumi.dexterox.listener.PermissionGrantedResponse;
-import com.karumi.dexterox.listener.PermissionRequest;
-import com.karumi.dexterox.listener.single.PermissionListener;
+import com.gigigo.ggglib.permission.PermissionManager;
+import com.gigigo.ggglib.permission.PermissionToken;
+import com.gigigo.ggglib.permission.listener.PermissionDeniedResponse;
+import com.gigigo.ggglib.permission.listener.PermissionGrantedResponse;
+import com.gigigo.ggglib.permission.listener.PermissionRequest;
+import com.gigigo.ggglib.permission.listener.single.PermissionListener;
 
 public abstract class AbstractPermissionListener implements PermissionListener {
 
@@ -83,14 +83,14 @@ public abstract class AbstractPermissionListener implements PermissionListener {
     //no retry close permission request
     if (getNumRetry() == 0) {
       if (rationaleResponse != null) rationaleResponse.cancelPermissionRequest();
-      Dexter.closeActivity();   //kill dexterActivity
+      PermissionManager.closeActivity();   //kill dexterActivity
     }
 
     if (getNumRetry() > 0) writeNewRetry();
 
     if (getNumRetry() > 0 && readNumRetryDone() >= getNumRetry()) {
       if (rationaleResponse != null) rationaleResponse.cancelPermissionRequest();
-      Dexter.closeActivity();
+      PermissionManager.closeActivity();
     }
   }
 

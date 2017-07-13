@@ -31,7 +31,7 @@ import android.view.ContextThemeWrapper;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import com.gigigo.ggglib.R;
-import com.karumi.dexterox.Dexter;
+import com.gigigo.ggglib.permission.PermissionManager;
 
 public class PermissionsUIViews {
 
@@ -46,7 +46,7 @@ public class PermissionsUIViews {
             @Override public void onClick(DialogInterface dialog, int which) {
               dialog.dismiss();
               rationaleResponse.cancelPermissionRequest();
-              Dexter.closeActivity();
+              PermissionManager.closeActivity();
             }
           })
           .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
@@ -58,7 +58,7 @@ public class PermissionsUIViews {
           .setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override public void onDismiss(DialogInterface dialog) {
               rationaleResponse.cancelPermissionRequest();
-              Dexter.closeActivity();
+              PermissionManager.closeActivity();
             }
           })
           .show();
@@ -135,14 +135,14 @@ public class PermissionsUIViews {
           .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
             @Override public void onClick(DialogInterface dialog, int which) {
               dialog.dismiss();
-              Dexter.closeActivity();
+              PermissionManager.closeActivity();
             }
           })
 
           .setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override public void onDismiss(DialogInterface dialog) {
               dialog.dismiss();
-              Dexter.closeActivity();
+              PermissionManager.closeActivity();
             }
           })
           .show();
