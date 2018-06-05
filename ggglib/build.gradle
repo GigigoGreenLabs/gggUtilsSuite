@@ -58,7 +58,7 @@ android {
 dependencies {
 
 
-  implementation parent.ext.dependencies.permissionsModule
+//  implementation parent.ext.dependencies.permissionsModule
   implementation parent.ext.dependencies.retrofit
   implementation parent.ext.dependencies.gsonConverter
 
