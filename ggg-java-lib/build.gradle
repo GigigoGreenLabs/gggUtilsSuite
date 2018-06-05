@@ -23,8 +23,8 @@ sourceCompatibility = JavaVersion.VERSION_1_7
 targetCompatibility = JavaVersion.VERSION_1_7
 
 dependencies {
-  testCompile parent.ext.testDependencies.junit
-  testCompile parent.ext.testDependencies.mockito
+  testImplementation parent.ext.testDependencies.junit
+  testImplementation parent.ext.testDependencies.mockito
 }
 
 test {

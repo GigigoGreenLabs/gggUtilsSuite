@@ -58,17 +58,17 @@ android {
 dependencies {
 
 
-  compile parent.ext.dependencies.permissionsModule
-  compile parent.ext.dependencies.retrofit
-  compile parent.ext.dependencies.gsonConverter
+  implementation parent.ext.dependencies.permissionsModule
+  implementation parent.ext.dependencies.retrofit
+  implementation parent.ext.dependencies.gsonConverter
 
-  compile project (':ggg-java-lib')
-  compile project (':ggglogger')
+  implementation project (':ggg-java-lib')
+  implementation project (':ggglogger')
 
-  testCompile parent.ext.testDependencies.junit
-  testCompile parent.ext.testDependencies.mockito
-  testCompile parent.ext.dependencies.gsonConverter
-  testCompile parent.ext.testDependencies.mockWebServer
+  testImplementation parent.ext.testDependencies.junit
+  testImplementation parent.ext.testDependencies.mockito
+  testImplementation parent.ext.dependencies.gsonConverter
+  testImplementation parent.ext.testDependencies.mockWebServer
 }
 
 //apply plugin: 'com.google.gms.google-services'
@@ -85,9 +85,9 @@ task javadoc(type: Javadoc) {
 }
 
 afterEvaluate {
-  javadoc.classpath += files(android.libraryVariants.collect { variant ->
+/*  javadoc.classpath += files(android.libraryVariants.collect { variant ->
     variant.javaCompile.classpath.files
-  })
+  })*/
 }
 
 // build a jar with javadoc

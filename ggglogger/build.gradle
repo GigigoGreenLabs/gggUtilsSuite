@@ -52,7 +52,7 @@ android {
 
 
 dependencies{
-  testCompile parent.ext.testDependencies.junit
+  testImplementation parent.ext.testDependencies.junit
 }
 
 // build a jar with source files
